@@ -18,7 +18,7 @@ const HomePage = () => {
         //axios is alternative of fetch()
         const res = await axios.get("http://localhost:5001/api/notes");
 
-        console.log(res.data);
+        setNotes(res.data);
       } catch (error) {
         console.log("Error Fetching notes");
         if (error.response?.status === 429) {
