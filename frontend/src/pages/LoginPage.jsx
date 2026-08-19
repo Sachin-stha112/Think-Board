@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
 import { Loader2Icon } from "lucide-react";
 import toast from "react-hot-toast";
@@ -9,6 +9,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +21,7 @@ const LoginPage = () => {
     try {
       await login(email, password);
       toast.success("Logged in successfully");
+      navigate("/");
     } catch (error) {
       toast.error(error.response?.data?.message || "Login failed");
     } finally {
@@ -45,7 +47,7 @@ const LoginPage = () => {
               </label>
               <input
                 type="email"
-                placeholder="john@example.com"
+                placeholder="sachin@example.com"
                 className="input input-bordered w-full bg-base-200/50 focus:border-[#00FF9D] focus:outline-none transition-colors"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}

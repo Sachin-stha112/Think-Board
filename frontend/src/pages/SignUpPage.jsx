@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext";
 import { Loader2Icon } from "lucide-react";
 import toast from "react-hot-toast";
@@ -10,6 +10,7 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const { signup } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ const SignUpPage = () => {
     try {
       await signup(name, email, password);
       toast.success("Account created successfully");
+      navigate("/");
     } catch (error) {
       toast.error(error.response?.data?.message || "Signup failed");
     } finally {
@@ -46,7 +48,7 @@ const SignUpPage = () => {
               </label>
               <input
                 type="text"
-                placeholder="John Doe"
+                placeholder="Sachin Stha"
                 className="input input-bordered w-full bg-base-200/50 focus:border-[#00FF9D] focus:outline-none transition-colors"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -59,7 +61,7 @@ const SignUpPage = () => {
               </label>
               <input
                 type="email"
-                placeholder="john@example.com"
+                placeholder="sachi@example.com"
                 className="input input-bordered w-full bg-base-200/50 focus:border-[#00FF9D] focus:outline-none transition-colors"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
