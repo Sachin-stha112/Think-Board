@@ -14,7 +14,7 @@ const PORT = Number(process.env.PORT) || 5001;
 
 //middleware
 app.use(cors(
-    {origin : "http://localhost:5173"}
+    {origin : ["http://localhost:5173", "https://think-board-lyart.vercel.app"]}
 )) 
 app.use(express.json()); 
 app.use(rateLimiter)
