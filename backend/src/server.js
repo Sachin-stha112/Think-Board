@@ -1,5 +1,6 @@
 import express from "express";
 import notesRoutes from "./routes/notesRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 import { connectDB } from "./config/db.js";
 import dotenv from "dotenv";
 import rateLimiter from "./middleware/rateLimiter.js";
@@ -26,7 +27,8 @@ app.use(rateLimiter)
 //     }
 
 // );
-app.use("/api/notes", notesRoutes); //api
+app.use("/api/notes", notesRoutes);
+app.use("/api/auth", authRoutes);
 
 // const startServer = (portNumber) => {
 //     const server = app.listen(portNumber, () => {
