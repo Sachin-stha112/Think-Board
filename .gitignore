@@ -5,3 +5,5 @@ frontend/.env
 dist/
 dist-ssr/
 *.local
+PROJECT_CONTEXT.md
+project-reference/
